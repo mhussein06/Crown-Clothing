@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 20px 40px;
-  font-family: 'Shadows Into Light', cursive;
+  font-family: "Advent Pro", sans-serif;
+  font-weight: bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -16,6 +17,6 @@ a {
   color: black;
   font-weight: bold;
 }
- * {
-   box-sizing: border-box;
- }
+* {
+  box-sizing: border-box;
+}
