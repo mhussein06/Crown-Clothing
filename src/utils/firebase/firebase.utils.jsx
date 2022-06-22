@@ -54,19 +54,19 @@ export const addCollectionAndDocuments = async (
 };
 
 
-export const createUserDocumentFromAuth = async (
+export const createUserDocumentFromAuth =  (
   userAuth,
   additionalInformation = {}
 ) => {
   if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid);
-  const userSnapshot = await getDoc(userDocRef);
+  const userSnapshot =  getDoc(userDocRef);
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
     try {
-      await setDoc(userDocRef, {
+       setDoc(userDocRef, {
         displayName,
         email,
         createdAt,
@@ -109,4 +109,4 @@ export const signOutUser = async () => await signOut(auth);
 //runs passed callback function whenever auth singleton changes
 //when user signs in or out
 export const onAuthChangedListener = (callback) =>
-  onAuthStateChanged(auth, callback);
+   onAuthStateChanged(auth, callback);
