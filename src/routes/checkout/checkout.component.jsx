@@ -1,14 +1,21 @@
-import { CartOpenContext } from "../../contexts/cart-context";
-import { useContext } from "react";
-import { CheckOutContainer, CheckOutHeader, HeaderBlock, Total} from "./checkout.styles.jsx";
+import {
+  CheckOutContainer,
+  CheckOutHeader,
+  HeaderBlock,
+  Total,
+} from "./checkout.styles.jsx";
+import { useSelector } from "react-redux";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cart.selector";
 
 import CheckOutItem from "../../components/checkout-item/checkout-item.component";
 
 const CheckOut = () => {
-  const { cartItems, cartTotal} = useContext(
-    CartOpenContext
-  );
-  
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
+
   return (
     <CheckOutContainer>
       <CheckOutHeader>
@@ -29,9 +36,9 @@ const CheckOut = () => {
         </HeaderBlock>
       </CheckOutHeader>
 
-      {cartItems.map((item) => 
+      {cartItems.map((item) => (
         <CheckOutItem cartItem={item} key={item.id} />
-      )}
+      ))}
       <Total> Total: ${cartTotal} </Total>
     </CheckOutContainer>
   );
