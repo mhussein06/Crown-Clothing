@@ -5,6 +5,7 @@ import {
 } from "./category-preview.styles.jsx";
 import ProductCard from "../product-card/product-card.component";
 import { Link } from "react-router-dom";
+import { useId } from "react";
 
 const CategoryPreview = ({ title, products }) => {
   return (
