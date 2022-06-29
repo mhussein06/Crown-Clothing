@@ -7,6 +7,7 @@ import CheckOut from "./routes/checkout/checkout.component.jsx";
 import {
   onAuthChangedListener,
   createUserDocumentFromAuth,
+  getCurrentUser,
 } from "./utils/firebase/firebase.utils";
 import { setCurrentUser } from "./store/user/user.action";
 import { useEffect } from "react";
@@ -17,13 +18,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthChangedListener((user) => {
-      if (user) {
-        createUserDocumentFromAuth(user.user);
-      }
-      dispatch(setCurrentUser(user));
-    });
-    return unsubscribe;
+    getCurrentUser().then((user) => console.log(user));
   }, []);
 
   return (
