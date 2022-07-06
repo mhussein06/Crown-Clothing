@@ -61,29 +61,33 @@ export const addCollectionAndDocuments = async (
   console.log("done");
 };
 
-export const createUserDocumentFromAuth = (
+export const createUserDocumentFromAuth = async (
   userAuth,
   additionalInformation = {}
 ) => {
   if (!userAuth) return;
-  const userDocRef = doc(db, "users", userAuth.uid);
-  const userSnapshot = getDoc(userDocRef);
 
+  const userDocRef = doc(db, 'users', userAuth.uid);
+
+  const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
+    console.log(userAuth);
     const { displayName, email } = userAuth;
     const createdAt = new Date();
+
     try {
-      setDoc(userDocRef, {
+      await setDoc(userDocRef, {
         displayName,
         email,
         createdAt,
         ...additionalInformation,
       });
     } catch (error) {
-      console.log("Error creating the user", error.message);
+      console.log('error creating the user', error.message);
     }
-    return userDocRef;
   }
+
+  return userSnapshot;
 };
 
 export const getCategoriesAndDocuments = async () => {
