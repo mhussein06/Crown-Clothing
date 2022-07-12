@@ -20,7 +20,6 @@ import {
   getDocs,
   query,
 } from "firebase/firestore";
-import { useDeferredValue } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDfweH3yWZU-sk0wd-QR1a60HIH5WioWuY",
