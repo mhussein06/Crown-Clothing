@@ -32,7 +32,7 @@ const CartDropdown = () => {
         )}
       </CartItems>
       <Link to="/checkout">
-        <Button onClick={toggleIsCartOpen}>GO TO CHECKOUT</Button>
+        <Button onClick={toggleIsCartOpen}> CHECKOUT</Button>
       </Link>
     </DropdownContainer>
   );
