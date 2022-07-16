@@ -1,33 +1,57 @@
-# How to fork and clone
-One quick note about cloning this project. If you wish to make commits and push your own code, you'll need to fork the project first. Forking allows you to have your own copy of this repository by adding a duplicate version in your own profile!
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Features](#features)
+* [Setup](#setup)
 
-You can see the fork button in the top right corner of every GitHub project; click it and a copy of the project will be added to your GitHub profile under the same name as the original project.
+## General info
+This project is a scalable online E-commerce application that uses React and Firebase for database functionality.
 
-<img width="612" alt="github fork" src="https://user-images.githubusercontent.com/10578605/157998981-4bfd1f83-825c-4664-b22d-b2c7d471dc70.png">
+![Screen Shot 2022-07-16 at 4 14 08 PM](https://user-images.githubusercontent.com/98786865/179372084-a132d80a-6a12-4c82-add8-a59b2792ab9d.png)
 
-After forking the project, simply clone it the way you would from the new forked project in your own GitHub repository and you can commit and push to it freely!
+	
+## Technologies
+Project is created with:
+* HTML
+* SCSS
+* JavaScript
+* React Library
+* Redux Saga
+* Stripe API
+* Firebase 
 
-# After you fork and clone:
 
-## Install dependencies
-In your terminal after you clone your project down, remember to run either `yarn` or `npm install` to build all the dependencies in the project.
+## Features
 
-## Set your firebase config
+* SignUp and SignIn with Google SignIn API integrated
 
-Remember to replace the config variable in your firebase.utils.js with your own config object from the firebase dashboard! Navigate to the project settings gear icon > project settings and scroll down to the config code. Copy the object in the code and replace the variable in your cloned code.
+![Screen Shot 2022-07-16 at 4 21 23 PM](https://user-images.githubusercontent.com/98786865/179372291-a997a793-12e5-411f-93e6-1f33c2af8ab6.png)
 
-<img width="1261" alt="Screen Shot 2022-03-11 at 8 51 22 PM" src="https://user-images.githubusercontent.com/10578605/157999158-10e921cc-9ee5-46f6-a0c5-1ae5686f54f3.png">
+* Unique routes and directories for different shop categories
 
-# Branching strategy
+![Screen Shot 2022-07-16 at 4 22 28 PM](https://user-images.githubusercontent.com/98786865/179372320-521295aa-29bb-463b-a64c-af168bd841c1.png)
 
-After forking this repository and cloning it down, you will have access to all the lesson branches with code at different checkpoints throughout the course. If for some reason you need to work from the codebase at one of these lesson branch checkpoints, follow these steps:
+* Fully functioning cart component
 
-1. Checkout to the lesson-# (let's use lesson-15 as an example) branch
-```
-git checkout lesson-15
-```
-2. Branch off from lesson-15. This will create a new branch where the code of lesson-15 is the basis for your new branch. You can name your new branch whatever you want! Let's say we use my-main-branch as the name.
-```
-git checkout -b my-main-branch
-```
-3. Now you can just code on this branch, push code from this branch up to your forked repo etc. The main thing to remember is that you want to be on this branch for your own code, so remember what you named this branch!
+![Screen Shot 2022-07-16 at 4 25 14 PM](https://user-images.githubusercontent.com/98786865/179372382-5179571a-d820-462b-b9c2-1d088d357a5f.png)
+
+* Checkout page which allows to edit quantity of items, and functioning payment form with Stripe
+
+![Screen Shot 2022-07-16 at 4 27 31 PM](https://user-images.githubusercontent.com/98786865/179372439-b7334a01-12ec-4fa8-8101-0f40166d9b33.png)
+
+
+
+	
+## Setup
+The following are the requirements to run this project:
+
+* Node Package Manager (NPM)
+* React
+
+To run this project in your device, download the repository and open terminal in your editor and run command…
+
+`npm start`
+
+Or you can directly visit
+
+https://rainbow-elf-b7ce8e.netlify.app
