@@ -19,7 +19,7 @@ const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
   const toggleIsCartOpen = () => {
     dispatch(setIsCartOpen(!isCartOpen));
-  }
+  };
   return (
     <DropdownContainer>
       <CartItems>
@@ -32,7 +32,7 @@ const CartDropdown = () => {
         )}
       </CartItems>
       <Link to="/checkout">
-        <Button onClick={toggleIsCartOpen}> CHECKOUT</Button>
+        <Button onClick={toggleIsCartOpen}>CHECKOUT</Button>
       </Link>
     </DropdownContainer>
   );
