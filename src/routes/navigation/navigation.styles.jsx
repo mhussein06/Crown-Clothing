@@ -35,6 +35,8 @@ export const Greetings = styled.span`
   padding: 10px 15px;
 `;
 
+
+
 // .navigation {
 //   height: 70px;
 //   width: 100%;

@@ -48,6 +48,7 @@ export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
 ) => {
+
   const batch = writeBatch(db);
   const collectionRef = collection(db, collectionKey);
 
@@ -111,8 +112,7 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => await signOut(auth);
 
-//runs passed callback function whenever auth singleton changes
-//when user signs in or out
+
 export const onAuthChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
 

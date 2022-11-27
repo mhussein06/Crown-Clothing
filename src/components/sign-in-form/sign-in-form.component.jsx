@@ -1,13 +1,13 @@
-import { useState } from "react";
-import {
-  signInWithGooglePopup,
-  signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase/firebase.utils";
+import { useEffect, useState } from "react";
 import FormInput from "../form-input/form-input.components";
 import { SignUpContainer, ButtonsContainer } from "./sign-in-form.styles.jsx";
 import Button, { ButtonClass } from "../buttons/button.component";
-import { useDispatch } from "react-redux";
-import { googleSignInStart, emailSignInStart } from "../../store/user/user.action";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../store/user/user.action";
+import { selectError } from "../../store/user/user.selector";
 
 const defaultFormFields = {
   email: "",
@@ -16,15 +16,17 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormField] = useState(defaultFormFields);
   const { email, password } = formFields;
-  
+  const [error, setError] = useState("");
+  const userError = useSelector(selectError);
+
   const dispatch = useDispatch();
 
   const clearFormFields = () => {
     setFormField(defaultFormFields);
   };
 
-  const signInWithGoogle =  () => {
-    dispatch(googleSignInStart())
+  const signInWithGoogle = () => {
+    dispatch(googleSignInStart());
   };
 
   const handleSubmit = async (event) => {
@@ -36,17 +38,30 @@ const SignInForm = () => {
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
-          alert("Password is incorrect! Please try again.");
-          break;
         case "auth/user-not-found":
-          alert("Email does not exist. Please register for free or try again.");
+          alert("Username or password is incorrect! Please try again.");
           break;
-
         default:
           console.log("Error occured", error);
       }
     }
   };
+
+  useEffect(() => {
+    if (userError) {
+      setError(userError.code);
+      switch (error) {
+        case "auth/wrong-password":
+          alert("Password is incorrect! Please try again.");
+          break;
+        case "auth/user-not-found":
+          alert("Email does not exist. Please register for free or try again.");
+          break;
+        default:
+          console.log("Error occured", error);
+      }
+    }
+  }, [error, userError]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
