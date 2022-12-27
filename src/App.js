@@ -6,9 +6,9 @@ import Authentication from "./routes/authentication/authentication.component.jsx
 import CheckOut from "./routes/checkout/checkout.component.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { checkUserSession } from "./store/user/user.action.js";
+import { checkUserSession } from "./store/user/user.action.ts";
 import IsUserLoggedIn from "./utils/helpers/is-user-logged-in.js";
-import { selectCurrentUser } from "./store/user/user.selector.js";
+import { selectCurrentUser } from "./store/user/user.selector.ts";
 
 const App = () => {
   const dispatch = useDispatch();

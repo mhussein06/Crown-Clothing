@@ -14,8 +14,8 @@ import {
   addItemToCart,
   removeItem,
   deleteItem,
-} from "../../store/cart/cart.action.js";
-import { selectCartItems } from "../../store/cart/cart.selector.js";
+} from "../../store/cart/cart.action.ts";
+import { selectCartItems } from "../../store/cart/cart.selector.ts";
 
 const CheckOutItem = ({ cartItem }) => {
   const cartItems = useSelector(selectCartItems)
