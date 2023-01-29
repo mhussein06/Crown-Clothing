@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FormEvent, ChangeEvent } from "react";
 import FormInput from "../form-input/form-input.components";
 import { SignUpContainer, ButtonsContainer } from "./sign-in-form.styles.jsx";
 import Button, { ButtonClass } from "../buttons/button.component";
@@ -8,11 +8,13 @@ import {
   emailSignInStart,
 } from "../../store/user/user.action";
 import { selectError } from "../../store/user/user.selector";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 
 const defaultFormFields = {
   email: "",
   password: "",
 };
+
 const SignInForm = () => {
   const [formFields, setFormField] = useState(defaultFormFields);
   const { email, password } = formFields;
@@ -29,16 +31,16 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       dispatch(emailSignInStart(email, password));
       clearFormFields();
     } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
-        case "auth/user-not-found":
+      switch ((error as AuthError).code) {
+        case AuthErrorCodes.INVALID_PASSWORD:
+        case AuthErrorCodes.USER_DELETED:
           alert("Username or password is incorrect! Please try again.");
           break;
         default:
@@ -49,7 +51,7 @@ const SignInForm = () => {
 
   useEffect(() => {
     if (userError) {
-      setError(userError.code);
+      setError(userError.message);
       switch (error) {
         case "auth/wrong-password":
           alert("Password is incorrect! Please try again.");
@@ -63,7 +65,7 @@ const SignInForm = () => {
     }
   }, [error, userError]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormField({ ...formFields, [name]: value });
   };

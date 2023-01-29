@@ -6,7 +6,7 @@ import {
   LogoContainer,
   NavLink,
   NavLinks,
-  Greetings
+  Greetings,
 } from "./navigation.styles.jsx";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
@@ -21,7 +21,6 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const signOutUser = () => dispatch(signOutStart());
 
-
   return (
     <Fragment>
       <NavigationContainer>
@@ -29,17 +28,25 @@ const Navigation = () => {
           <CrwnLogo className="logo" />
         </LogoContainer>
         <NavLinks>
-          {currentUser ? (<Greetings> HELLO {currentUser.displayName.toUpperCase()} </Greetings>) : (console.log())}
-          <NavLink to="/shop">SHOP</NavLink>
-          {currentUser ? (
-            <NavLink as="span" onClick={signOutUser}>
-              
-              SIGN OUT
-            </NavLink>
-          ) : (
-            <NavLink to="/auth">SIGN IN</NavLink>
-          )}
-          <CartIcon />
+          <>
+            {currentUser ? (
+              <Greetings>
+                {" "}
+                HELLO {currentUser.displayName.toUpperCase()}{" "}
+              </Greetings>
+            ) : (
+              console.log()
+            )}
+            <NavLink to="/shop">SHOP</NavLink>
+            {currentUser ? (
+              <NavLink as="span" onClick={signOutUser}>
+                SIGN OUT
+              </NavLink>
+            ) : (
+              <NavLink to="/auth">SIGN IN</NavLink>
+            )}
+            <CartIcon />
+          </>
         </NavLinks>
         {isCartOpen && <CartDropdown />}
       </NavigationContainer>
