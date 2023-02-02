@@ -6,10 +6,3 @@ display: flex;
     justify-content: space-between;
     margin: 30px auto;
 `
-
-// .authentication-container {
-//     display: flex;
-//     width: 900px;
-//     justify-content: space-between;
-//     margin: 30px auto;
-// }

@@ -14,6 +14,7 @@ const PaymentForm = () => {
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  
   const ifValidCardElement = (card: StripeCardElement | null): card is StripeCardElement => card !== null;
 
   const paymentHandler = async (e: FormEvent<HTMLFormElement>) => {
